@@ -1,0 +1,560 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample Petstore server.  You can find \nout more about Swagger at \n[http://swagger.io](http://swagger.io) or on \n[irc.freenode.net, #swagger](http://swagger.io/irc/).\n",
+    "version": "1.0.0",
+    "title": "Swagger Petstore",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "virtserver.swaggerhub.com",
+  "basePath": "/RevolutionAlexsander/Payment/1.0.0",
+  "schemes": [
+    "https",
+    "http"
+  ],
+
+
+  "paths": {
+    "/accounts/all": {
+      "get": {
+        "tags": [
+          "accounts"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Schet"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_token" : [ ]
+        } ]
+      }
+    },
+
+    "/applications/": {
+      "get": {
+        "tags": [
+          "applications"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Application"
+              }
+            }
+          },
+          "security" : [ {
+            "api_token" : [ ]
+          } ]
+        }
+      }
+    },
+    "/applications/approval": {
+      "post": {
+        "tags": [
+          "applications"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api_token",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "approval",
+            "in": "formData",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "security" : [ {
+          "api_token" : [ ]
+        } ]
+      }
+    },
+    "/applications/add": {
+      "get": {
+        "tags": [
+          "applications"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security" : [ {
+          "api_token" : [ ]
+        } ]
+      },
+      "post": {
+        "tags": [
+          "applications"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api_token",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "tip_scheta_id_tip_scheta",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "tarif_id_tarif",
+            "in": "formData",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "income",
+            "in": "formData",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "poluchatel_id",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Schet"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_token" : [ ]
+        } ]
+      }
+    },
+
+    "/payment/": {
+      "get": {
+        "tags": [
+          "payment"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Platezh"
+            }
+          }
+        },
+        "security" : [ {
+          "api_token" : [ ]
+        } ]
+      }
+    },
+    "/payment/add": {
+      "get": {
+        "tags": [
+          "payment"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security" : [ {
+          "api_token" : [ ]
+        } ]
+      },
+      "post": {
+        "tags": [
+          "payment"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api_token",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "summa",
+            "in": "formData",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "otpravitel_id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id_schet",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Platezh"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_token" : [ ]
+        } ]
+      }
+    },
+
+    "/autopayment/": {
+      "get": {
+        "tags": [
+          "autopayment"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Avtoplatezh"
+            }
+          }
+        },
+        "security" : [ {
+          "api_token" : [ ]
+        } ]
+      }
+    },
+    "/autopayment/add": {
+      "get": {
+        "tags": [
+          "autopayment"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security" : [ {
+          "api_token" : [ ]
+        } ]
+      },
+      "post": {
+        "tags": [
+          "autopayment"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api_token",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "summa",
+            "in": "formData",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "otpravitel_id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id_avtoplatezh",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id_schet",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Avtoplatezh"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_token" : [ ]
+        } ]
+      }
+    },
+    "/autopayment/frozen": {
+      "post": {
+        "tags": [
+          "autopayment"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api_token",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Avtoplatezh"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_token" : [ ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "api_token" : {
+      "type" : "api_token",
+      "name" : "api_token",
+      "in" : "header"
+    }
+  },
+  "definitions": {
+    "TypeApplication": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "TypeApplication"
+      }
+    },
+    "Tip_Scheta": {
+      "type": "object",
+      "properties": {
+        "id_tip_scheta": {
+          "type": "integer"
+        },
+        "naimenovanie": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "TipScheta"
+      }
+    },
+    "Cleint": {
+      "type": "object",
+      "properties": {
+        "id_client": {
+          "type": "integer"
+        },
+        "fio": {
+          "type": "string"
+        },
+        "parol": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "api_token": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Client"
+      }
+    },
+    "Tarif": {
+      "type": "object",
+      "properties": {
+        "ID_Tarif": {
+          "type": "integer"
+        },
+        "Naimenovanie": {
+          "type": "string"
+        },
+        "Uslovia": {
+          "type": "string"
+        },
+        "Procent": {
+          "type": "string"
+        },
+        "Limit": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Tarif"
+      }
+    },
+    "Avtoplatezh": {
+      "type": "object",
+      "properties": {
+        "ID_Avtoplatezh": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Summa": {
+          "type": "number"
+        },
+        "Poluchatel_ID": {
+          "type": "string"
+        },
+        "Tip_Scheta_ID": {
+          "$ref": "#/definitions/TipSCheta"
+        },
+        "Otpravitel_ID": {
+          "$ref": "#/definitions/Client"
+        },        
+        "tarif_id": {
+          "$ref": "#/definitions/Tarif"
+        }
+      },
+      "xml": {
+        "name": "Avroplatezh"
+      }
+    },
+    "Schet": {
+      "type": "object",
+      "properties": {
+        "ID_Schet": {
+          "type": "integer"
+        },
+        "Status_ID": {
+          "type": "boolean"
+        },
+        "Balance": {
+          "type": "number"
+        },
+        "date_opening": {
+          "type": "string"
+        },
+        "Date_Otkr": {
+          "type": "string"
+        },
+        "Client_ID": {
+          "$ref": "#/definitions/Client"
+        }
+      },
+      "xml": {
+        "name": "Schet"
+      }
+    },
+    "Platezh": {
+      "type": "object",
+      "properties": {
+        "Otpravitel_ID": {
+          "type": "integer"
+        },
+        "Poluchatel_ID": {
+          "type": "string"
+        },
+        "Summa": {
+          "type": "number"
+        },
+        "Date_Paltezha_ID": {
+          "type": "string"
+        }
+      }
+    },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
